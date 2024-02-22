@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   packages = [ pkgs.go ];
   bootstrap = ''
+    env
+    HOME=${./.}
     go env -w GOMODCACHE="$HOME/go/pkg/mod"
     go env
     go install golang.org/x/tools/cmd/gonew@latest
