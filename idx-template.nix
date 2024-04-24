@@ -11,9 +11,9 @@
     mkdir "go"
     chmod -R +w "go"
     echo "Go Install:"
-    GOPATH='go' go install golang.org/x/tools/cmd/gonew@latest
+    GOPATH='$(pwd)/go' go install golang.org/x/tools/cmd/gonew@latest
     echo "gonew:\n"
-    GOPATH='go' gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
+    GOPATH='$(pwd)/go' gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
     chmod -R +w "$WS_NAME"
     mv "$WS_NAME" "$out"
   '';
