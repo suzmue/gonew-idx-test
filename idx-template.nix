@@ -11,9 +11,9 @@
     mkdir "go"
     chmod -R +w "go"
     echo "Go Install:"
-    GOPATH='$PWD/go' GOMODCACHE='$PWD/go/pkg/mod' go install golang.org/x/tools/cmd/gonew@latest
+    GOMODCACHE=$(mktemp -d) go install golang.org/x/tools/cmd/gonew@latest
     echo "gonew:"
-    GOPATH='$PWD/go' GOMODCACHE='$PWD/go/pkg/mod' gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
+    GOMODCACHE=$(mktemp -d) gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
     chmod -R +w "$WS_NAME"
     mv "$WS_NAME" "$out"
   '';
