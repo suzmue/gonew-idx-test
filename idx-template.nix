@@ -7,12 +7,11 @@
     go env
     whoami
     echo "Mkdir:"
-    mkdir gopath
-    chmod -R +w gopath
+    mkdir $WS_NAME/go
     echo "Go Install:"
-    GOPATH='/gopath' go install golang.org/x/tools/cmd/gonew@latest
+    GOPATH='$WS_NAME/go' go install golang.org/x/tools/cmd/gonew@latest
     echo "gonew:\n"
-    GOPATH='/gopath' gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
+    GOPATH='$WS_NAME/go' gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
     chmod -R +w "$WS_NAME"
     mv "$WS_NAME" "$out"
   '';
