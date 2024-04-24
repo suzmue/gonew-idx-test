@@ -7,7 +7,9 @@
     go env
     whoami
     echo "Mkdir:"
+    chmod -R +w "$WS_NAME"
     mkdir $WS_NAME/go
+    chmod -R +w "$WS_NAME/go"
     echo "Go Install:"
     GOPATH='$WS_NAME/go' go install golang.org/x/tools/cmd/gonew@latest
     echo "gonew:\n"
