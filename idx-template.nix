@@ -1,19 +1,19 @@
 { pkgs, ... }: {
   packages = [ pkgs.go ];
   bootstrap = ''
-    echo "Env:"
+    echo "env:"
     env
     echo "Go Env:"
     go env
-    whoami
-    echo "Mkdir:"
-    chmod -R +w "$WS_NAME"
-    mkdir $WS_NAME/go
-    chmod -R +w "$WS_NAME/go"
+
+    echo "mkdir:"
+    pwd
+    mkdir "go"
+    chmod -R +w "go"
     echo "Go Install:"
-    GOPATH='$WS_NAME/go' go install golang.org/x/tools/cmd/gonew@latest
+    GOPATH='go' go install golang.org/x/tools/cmd/gonew@latest
     echo "gonew:\n"
-    GOPATH='$WS_NAME/go' gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
+    GOPATH='go' gonew github.com/suzmue/gemini-template/go-gemini gemini-template "$WS_NAME"
     chmod -R +w "$WS_NAME"
     mv "$WS_NAME" "$out"
   '';
